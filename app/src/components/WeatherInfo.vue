@@ -27,7 +27,7 @@
       <figure class="w-1/2 md:w-full">
         <img
           :src="iconSrc"
-          class="mx-auto h-full w-1/2 md:h-60 md:w-full object-cover"
+          class="mx-auto h-full w-1/2 md:h-60 md:w-full object-contain"
         />
       </figure>
       <div class="w-1/2 md:w-full flex justify-evenly md:flex-row flex-col">
