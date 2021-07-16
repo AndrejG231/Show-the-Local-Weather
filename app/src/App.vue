@@ -2,21 +2,23 @@
   <div class="w-full h-screen flex flex-col">
     <Title />
     <div class="flex-grow bg-blue-200 flex justify-center align-center">
-      <GetWeatherButton v-if="!weahterData" v-on:click="getWeather" />
-      <WeatherInfo v-if="weahterData" />
+      <GetWeatherButton v-if="!weatherData" v-on:click="getWeather" />
+      <WeatherInfo v-if="weatherData" v-bind:weatherData="weatherData" />
     </div>
   </div>
 </template>
 
 <script>
-import * as components from "@/components/";
+import { WeatherInfo, GetWeatherButton, Title } from "@/components/";
+const components = { WeatherInfo, GetWeatherButton, Title };
 
 export default {
   name: "app",
   components,
+
   data() {
     return {
-      weahterData: null,
+      weatherData: null,
     };
   },
   methods: {
@@ -37,7 +39,7 @@ export default {
           `https://weather-proxy.freecodecamp.rocks/api/current?lat=${latitude}&lon=${longitude}`
         )
           .then((res) => res.json())
-          .then((data) => (this.weahterData = data))
+          .then((data) => (this.weatherData = data))
           .catch(this.locationAlert);
       }, this.locationAlert);
     },
